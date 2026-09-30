@@ -40,6 +40,7 @@ public class StreamingController {
     public ResponseEntity<StreamingResponse> saveStreaming(@RequestBody StreamingRequest streamingRequest) {
         Streaming newStreaming = StreamingMapper.toStreaming(streamingRequest);
         Streaming savedStreaming = streamingService.saveStreaming(newStreaming);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(StreamingMapper.toStreamingResponse(savedStreaming));
     }
 

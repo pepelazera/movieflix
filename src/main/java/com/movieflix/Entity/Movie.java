@@ -25,7 +25,7 @@ public class Movie {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "desription")
+    @Column(name = "description")
     private String description;
 
     @Column(name = "release_date")
