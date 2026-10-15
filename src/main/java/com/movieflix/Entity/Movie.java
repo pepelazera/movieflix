@@ -44,16 +44,16 @@ public class Movie {
     @ManyToMany
     @JoinTable(
             name = "movie_category",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
+            joinColumns = @JoinColumn(name = "movieId"),
+            inverseJoinColumns = @JoinColumn(name = "categoryId")
     )
     private List<Category> categories;
 
     @ManyToMany
     @JoinTable(
             name = "movie_streaming",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "streaming_id")
+            joinColumns = @JoinColumn(name = "movieId"),
+            inverseJoinColumns = @JoinColumn(name = "streamingId")
     )
     private List<Streaming> streamings;
 
