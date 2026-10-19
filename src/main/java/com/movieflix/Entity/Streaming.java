@@ -3,6 +3,8 @@ package com.movieflix.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Entity
 @Table(name = "streaming")
@@ -24,5 +26,21 @@ public class Streaming {
 
     @Column(name = "streaming_name")
     private String streamingName;
+
+    @ManyToMany
+    @JoinTable(
+            name = "streaming_category",
+            joinColumns = @JoinColumn(name = "streamingId"),
+            inverseJoinColumns = @JoinColumn(name = "categoryId")
+    )
+    private List<Category> categories;
+
+    @ManyToMany
+    @JoinTable(
+            name = "streaming_movie",
+            joinColumns = @JoinColumn(name = "streamingId"),
+            inverseJoinColumns = @JoinColumn(name = "movieId")
+    )
+    private List<Movie> movies;
 
 }

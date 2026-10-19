@@ -5,6 +5,8 @@ import com.movieflix.Entity.Movie;
 import com.movieflix.Entity.Streaming;
 import com.movieflix.Request.CategoryRequest;
 import com.movieflix.Response.CategoryResponse;
+import com.movieflix.Response.MovieResponse;
+import com.movieflix.Response.StreamingResponse;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;
@@ -16,7 +18,11 @@ public class CategoryMapper {
 
        List<Movie> movies = categoryRequest.movies().stream()
                .map(id -> Movie.builder().movieId(id).build())
-               .toList();       
+               .toList();
+
+       List<Streaming> streamings = categoryRequest.streamings().stream()
+               .map(id -> Streaming.builder().streamingId(id).build())
+               .toList();
 
         return Category
                 .builder()
@@ -25,6 +31,15 @@ public class CategoryMapper {
     }
 
     public static CategoryResponse toCategoryResponse(Category category) {
+
+        List<MovieResponse> movieResponses = category.getMovies()
+                .stream().map(MovieMapper::toMovieResponse)
+                .toList();
+
+        List<StreamingResponse> streamingResponses = category.getStreamings()
+                .stream().map(StreamingMapper::toStreamingResponse)
+                .toList();
+
         return CategoryResponse
                 .builder()
                 .id(category.getCategoryId())
