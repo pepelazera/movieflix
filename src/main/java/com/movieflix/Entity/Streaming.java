@@ -30,16 +30,16 @@ public class Streaming {
     @ManyToMany
     @JoinTable(
             name = "streaming_category",
-            joinColumns = @JoinColumn(name = "streamingId"),
-            inverseJoinColumns = @JoinColumn(name = "categoryId")
+            joinColumns = @JoinColumn(name = "streaming_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private List<Category> categories;
 
     @ManyToMany
     @JoinTable(
             name = "streaming_movie",
-            joinColumns = @JoinColumn(name = "streamingId"),
-            inverseJoinColumns = @JoinColumn(name = "movieId")
+            joinColumns = @JoinColumn(name = "streaming_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private List<Movie> movies;
 

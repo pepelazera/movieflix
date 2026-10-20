@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: my-postgres-db
+    environment:
+      POSTGRES_DB: movieflix
+      POSTGRES_USER: pepelazera
+      POSTGRES_PASSWORD: amex8624
+    ports:
+      - "5430:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
