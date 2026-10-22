@@ -6,8 +6,5 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record CategoryRequest(String name,
-                              List<Long> movies,
-                              List<Long> streamings
-) {
+public record CategoryRequest(String name) {
 }

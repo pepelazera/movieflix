@@ -24,21 +24,4 @@ public class Category {
 
     @Column(name = "category_name", nullable = false)
     private String categoryName;
-
-    @ManyToMany
-    @JoinTable(
-            name = "category_movie",
-            joinColumns = @JoinColumn(name = "categoryId"),
-            inverseJoinColumns = @JoinColumn(name = "movieId")
-    )
-    private List<Movie> movies;
-
-    @ManyToMany
-    @JoinTable(
-            name = "category_streaming",
-            joinColumns = @JoinColumn(name = "categoryId"),
-            inverseJoinColumns = @JoinColumn(name = "streamingId")
-    )
-    private List<Streaming> streamings;
-
 }

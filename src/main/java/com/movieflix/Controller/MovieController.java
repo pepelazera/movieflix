@@ -1,6 +1,7 @@
 package com.movieflix.Controller;
 
 import com.movieflix.Entity.Movie;
+import com.movieflix.Mapper.CategoryMapper;
 import com.movieflix.Mapper.MovieMapper;
 import com.movieflix.Request.MovieRequest;
 import com.movieflix.Response.MovieResponse;
@@ -36,6 +37,15 @@ public class MovieController {
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<MovieResponse>> findMovieByCategory(@RequestParam Long category) {
+        return ResponseEntity.ok(movieService.searchMovieByCategory(category)
+                .stream().map(MovieMapper::toMovieResponse)
+                .toList()
+        );
+    }
+
+
     @PostMapping
     public ResponseEntity<MovieResponse> saveMovies(@RequestBody MovieRequest movieRequest) {
         Movie newMovie = MovieMapper.toMovie(movieRequest);
@@ -61,5 +71,4 @@ public class MovieController {
                 .map(movie -> ResponseEntity.ok(MovieMapper.toMovieResponse(movie)))
                 .orElse(ResponseEntity.notFound().build());
     }
-
 }

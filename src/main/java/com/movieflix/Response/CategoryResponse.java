@@ -6,9 +6,6 @@ import java.util.List;
 
 @Builder
 public record CategoryResponse(Long id,
-                               String name,
-                               List<MovieResponse> movies,
-                               List<StreamingResponse> streamings
-                                ) {
+                               String name) {
     // Importante passar os parâmetros que vamos utilizar, pois eles que serão instanciados lá no CategoryMapper
 }

@@ -26,6 +26,7 @@ public class Streaming {
 
     @Column(name = "streaming_name")
     private String streamingName;
+<<<<<<< HEAD
 
     @ManyToMany
     @JoinTable(
@@ -43,4 +44,6 @@ public class Streaming {
     )
     private List<Movie> movies;
 
+=======
+>>>>>>> d183107 (Traz uma nova maneira de como realizar buscas. Agora, consigo buscar filmes pelo ID de suas categorias.)
 }

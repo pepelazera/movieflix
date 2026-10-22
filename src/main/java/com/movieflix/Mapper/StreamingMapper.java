@@ -15,15 +15,6 @@ import java.util.List;
 public class StreamingMapper {
 
     public static Streaming toStreaming(StreamingRequest streamingRequest) {
-
-        List<Category> categories = streamingRequest.categories().stream()
-                .map(id -> Category.builder().categoryId(id).build())
-                .toList();
-
-        List<Movie> movies = streamingRequest.streamings().stream()
-                .map(id -> Movie.builder().movieId(id).build())
-                .toList();
-
         return Streaming.
                 builder()
                 .streamingName(streamingRequest.name())
@@ -31,15 +22,6 @@ public class StreamingMapper {
     }
 
     public static StreamingResponse toStreamingResponse(Streaming streaming) {
-
-        List<CategoryResponse> categoryResponses = streaming.getCategories()
-                .stream().map(CategoryMapper::toCategoryResponse)
-                .toList();
-
-        List<MovieResponse> movieResponses = streaming.getMovies()
-                .stream().map(MovieMapper::toMovieResponse)
-                .toList();
-
         return StreamingResponse
                 .builder()
                 .id(streaming.getStreamingId())

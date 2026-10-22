@@ -4,8 +4,11 @@ import com.movieflix.Entity.Category;
 import com.movieflix.Entity.Movie;
 import com.movieflix.Entity.Streaming;
 import com.movieflix.Repository.MovieRepository;
+import com.movieflix.Response.MovieResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,10 @@ public class MovieService {
 
     public Optional<Movie> searchMovieById(Long id) {
         return movieRepository.findById(id);
+    }
+
+    public List<Movie> searchMovieByCategory(Long categoryId) {
+        return movieRepository.findByCategories_CategoryId(categoryId);
     }
 
     public Movie saveMovie(Movie movie) {
@@ -79,5 +86,4 @@ public class MovieService {
         }
         return Optional.empty();
     }
-
 }
