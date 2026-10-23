@@ -1,0 +1,12 @@
+$kind: http-request
+name: Movie - List by category
+method: GET
+url: 'localhost:8080/movieflix/movie/search'
+queryParams: []
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    8
