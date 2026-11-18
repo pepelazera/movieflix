@@ -15,7 +15,7 @@ import java.util.List;
 public class Streaming {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    @GeneratedValue(strategy = GenerationType.IDENTITY,
             generator = "streaming_seq_generator")
 
     @SequenceGenerator(name = "streaming_seq_generator",

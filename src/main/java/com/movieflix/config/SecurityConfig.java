@@ -18,19 +18,17 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    //private final SecurityFilter securityFilter;
-
-    @Bean // When I write @Bean, I say to security that he needs to gerenciate this to me
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers(HttpMethod.POST, "/movieflix/auth/register").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/movieflix/auth/login").permitAll()
-                                .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/movieflix/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/movieflix/auth/login").permitAll()
+                        .requestMatchers("/error").permitAll()
+                        .anyRequest().authenticated()
                 )
-                //.addFilter()
                 .build();
     }
 
@@ -39,10 +37,9 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // When I do a call, the Spring will return me this command
+        return new BCryptPasswordEncoder();
     }
 
 }
