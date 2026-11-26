@@ -5,8 +5,10 @@ import com.movieflix.Entity.Movie;
 import com.movieflix.Entity.Streaming;
 import com.movieflix.Repository.MovieRepository;
 import com.movieflix.Response.MovieResponse;
+import com.movieflix.config.JWTUserData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 

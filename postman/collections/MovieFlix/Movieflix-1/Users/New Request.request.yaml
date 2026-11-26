@@ -1,4 +1,15 @@
 $kind: http-request
-url: ""
-method: GET
+url: localhost:8080/movieflix/auth/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Pedro Lazera Jr\",\r
+
+    \    \"email\": \"pepelazera@gmail.com\",\r
+
+    \    \"password\": \"amex8624\"\r
+
+    }"
 order: 1000
