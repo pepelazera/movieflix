@@ -5,6 +5,7 @@ import com.movieflix.Mapper.StreamingMapper;
 import com.movieflix.Request.StreamingRequest;
 import com.movieflix.Response.StreamingResponse;
 import com.movieflix.Service.StreamingService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class StreamingController {
     }
 
     @PostMapping
-    public ResponseEntity<StreamingResponse> saveStreaming(@RequestBody StreamingRequest streamingRequest) {
+    public ResponseEntity<StreamingResponse> saveStreaming(@Valid @RequestBody StreamingRequest streamingRequest) {
         Streaming newStreaming = StreamingMapper.toStreaming(streamingRequest);
         Streaming savedStreaming = streamingService.saveStreaming(newStreaming);
 
